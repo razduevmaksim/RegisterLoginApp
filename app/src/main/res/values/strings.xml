@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Register/Login</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="edittext_name_hint"><font size="12">John Doe</font></string>
+    <string name="edittext_mobile_number_hint"><font size="12">37529*******</font></string>
+
+    <string name="edittext_email_hint"><font size="12">example@examplemail.com</font></string>
+    <string name="edittext_password_hint"><font size="12">******</font></string>
+    <string name="button_password_show_hide_hint"><font size="12">*</font></string>
+    <string name="text_main_page">Thanks for using our app</string>
+    <string name="login">Login</string>
+    <string name="your_email">Your Email</string>
+    <string name="password">Password</string>
+    <string name="forget_your_password">Forget your password</string>
+    <string name="dont_have_an_account">Don\'t have an account? Sign up</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="already_have_an_account">Already have an account? Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="confirm_password">Confirm Password</string>
+</resources>
