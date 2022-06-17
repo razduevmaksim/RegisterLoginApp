@@ -20,72 +20,54 @@
         android:fontFamily="sans-serif-thin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/textViewLoginEmail"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextLoginLoginLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:text="@string/your_email"
-        android:fontFamily="sans-serif-thin"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewLogin" />
-    <EditText
-        android:id="@+id/editTextLoginEmail"
-        android:layout_width="500dp"
-        android:layout_height="40dp"
-        android:background="#1A1E1E"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:hint="@string/edittext_email_hint"
-        android:textColorHint="@color/gray"
-        android:paddingStart="15dp"
-        android:layout_marginTop="10dp"
-        android:inputType="textEmailAddress"
-        app:layout_constraintLeft_toRightOf="@+id/textViewLoginEmail"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/textViewLoginPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:text="@string/password"
-        android:fontFamily="sans-serif-thin"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextLoginEmail" />
-
-    <EditText
-        android:id="@+id/editTextLoginPassword"
-        android:layout_width="500dp"
-        android:layout_height="40dp"
         android:layout_marginTop="12dp"
-        android:background="#1A1E1E"
-        android:hint="@string/edittext_password_hint"
-        android:inputType="textPassword"
-        android:paddingStart="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/gray"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toRightOf="@+id/textViewLoginPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLoginEmail"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogin"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#1A1E1E"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:hint="@string/your_email"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-thin"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/buttonPasswordShowHide"
-        android:layout_width="40dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/button_password_show_hide_hint"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextLoginPassword"
-        app:layout_constraintRight_toRightOf="@+id/editTextLoginPassword"
-        app:layout_constraintTop_toTopOf="@+id/editTextLoginPassword" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextLoginPasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLoginLoginLayout"
+        android:layout_marginTop="12dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:hint="@string/password"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-thin"
+            android:background="#1A1E1E"
+            android:paddingEnd="50dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
     <TextView
         android:id="@+id/textViewForgetYourPassword"
         android:layout_width="wrap_content"
@@ -96,8 +78,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-thin"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLoginPassword"
-        app:layout_constraintRight_toRightOf="@+id/editTextLoginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLoginPasswordLayout"
+        app:layout_constraintRight_toRightOf="@+id/editTextLoginPasswordLayout"
         />
     <TextView
         android:id="@+id/textViewSignUp"
