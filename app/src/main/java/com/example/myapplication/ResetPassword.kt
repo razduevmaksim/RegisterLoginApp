@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_reset_password.*
+import kotlinx.android.synthetic.main.fragment_reset_password.buttonToLogin
 
 
 private lateinit var preferences: SharedPreferences
@@ -67,7 +68,9 @@ class ResetPassword : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                validationPassword = if (editTextResetPasswordPassword.text.toString().length < 6 ){
+                val onlyNumbers = editTextResetPasswordPassword.text.toString().matches("-?\\d+(\\.\\d+)?".toRegex())
+
+                validationPassword = if (editTextResetPasswordPassword.text.toString().length < 6 || onlyNumbers){
                     editTextResetPasswordPassword.error = "Invalid Password"
                     false
                 } else{

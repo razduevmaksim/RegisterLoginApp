@@ -59,7 +59,6 @@ class Register : Fragment() {
 
         //Валидация MobileNumber
         var validationNumber = false
-
         editTextMobileNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -67,13 +66,62 @@ class Register : Fragment() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 validationNumber =
-                    if (android.util.Patterns.PHONE.matcher(editTextMobileNumber.text.toString()).matches()
-                        && editTextMobileNumber.text.toString().length==12) {
+                    if (android.util.Patterns.PHONE.matcher(editTextMobileNumber.text.toString())
+                            .matches()
+                        && editTextMobileNumber.text.toString().length == 17
+                    ) {
                         true
-                    } else{
+                    } else {
                         editTextMobileNumber.error = "Invalid Mobile Phone"
                         false
                     }
+
+                //Маска ввода
+
+                val text = editTextMobileNumber.text.toString()
+                val textLength = editTextMobileNumber.text?.length
+
+                if (text.endsWith(" "))
+                    return
+
+                if (textLength == 1) {
+                    if (!text.contains("+")) {
+                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "+").toString())
+                        editTextMobileNumber.text
+                            ?.let { editTextMobileNumber.setSelection(it.length) }
+                    }
+
+                } else if (textLength == 8) {
+
+                    if (!text.contains(")")) {
+                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, ")").toString())
+                        editTextMobileNumber.text
+                            ?.let { editTextMobileNumber.setSelection(it.length) }
+                    }
+
+                } else if (textLength == 5) {
+
+                    if (!text.contains("(")) {
+                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "(").toString())
+                        editTextMobileNumber.text
+                            ?.let { editTextMobileNumber.setSelection(it.length) }
+                    }
+
+                } else if (textLength == 12) {
+                    if (!text.contains("-")) {
+                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "-").toString())
+                        editTextMobileNumber.text
+                            ?.let { editTextMobileNumber.setSelection(it.length) }
+                    }
+                }
+                else if (textLength == 15) {
+                    if (text.contains("-")) {
+                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "-").toString())
+                        editTextMobileNumber.text
+                            ?.let { editTextMobileNumber.setSelection(it.length) }
+                    }
+                }
+
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -112,7 +160,9 @@ class Register : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                validationPassword = if (editTextRegisterPassword.text.toString().length < 6 ){
+                val onlyNumbers = editTextRegisterPassword.text.toString().matches("-?\\d+(\\.\\d+)?".toRegex())
+
+                validationPassword = if (editTextRegisterPassword.text.toString().length < 6 || onlyNumbers){
                     editTextRegisterPassword.error = "Invalid Password"
                     false
                 } else{

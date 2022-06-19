@@ -60,6 +60,7 @@
             android:inputType="phone"
             android:textColor="@color/white"
             android:hint="@string/mobile_number"
+            android:maxLength="17"
             android:textSize="12sp"
             android:fontFamily="sans-serif-thin"
             />
