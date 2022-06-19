@@ -6,19 +6,19 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121515"
-    android:padding="20dp"
+    android:background="@color/dark_gray"
+    android:padding="@dimen/spacing_large"
     tools:context=".Register">
 
     <TextView
         android:id="@+id/textViewRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#121515"
+        android:background="@color/dark_gray"
         android:fontFamily="sans-serif-thin"
         android:text="@string/register"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_larger"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:id="@+id/textViewRegisterName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/spacing_normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColorHint="@color/white"
@@ -34,21 +34,21 @@
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextRegisterName"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/fragment_width_edit_text_land"
             android:layout_height="wrap_content"
-            android:background="#1A1E1E"
+            android:background="@color/gray_green"
             android:inputType="text"
             android:textColor="@color/white"
             android:hint="@string/name"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_small"
             android:fontFamily="sans-serif-thin"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textViewMobileNumber"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/fragment_width_edit_text_land"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/spacing_normal"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColorHint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegister"
@@ -57,11 +57,11 @@
             android:id="@+id/editTextMobileNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#1A1E1E"
+            android:background="@color/gray_green"
             android:inputType="phone"
             android:textColor="@color/white"
             android:hint="@string/mobile_number"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_small"
             android:fontFamily="sans-serif-thin"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,7 +69,7 @@
         android:id="@+id/textViewRegisterEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/spacing_normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColorHint="@color/white"
@@ -79,11 +79,11 @@
             android:id="@+id/editTextRegisterEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#1A1E1E"
+            android:background="@color/gray_green"
             android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:hint="@string/your_email"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_small"
             android:fontFamily="sans-serif-thin"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -98,7 +98,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textColorHint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegisterEmail"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/spacing_normal"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextRegisterPassword"
@@ -106,11 +106,12 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@color/white"
-            android:hint="Password"
-            android:textSize="12sp"
+            android:hint="@string/password"
+            android:textSize="@dimen/text_small"
             android:fontFamily="sans-serif-thin"
-            android:background="#1A1E1E"
-            android:paddingEnd="50dp"
+            android:background="@color/gray_green"
+            android:paddingEnd="@dimen/spacing_huge"
+            android:paddingStart="@dimen/spacing_large"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
@@ -121,22 +122,22 @@
         android:fontFamily="sans-serif-thin"
         android:text="@string/already_have_an_account"
         android:textColor="@color/green"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_normal"
         android:textStyle="bold"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="@dimen/spacing_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/buttonToLogin"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterPassword"
+        android:focusable="true" />
 
     <Button
         android:id="@+id/buttonToLogin"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/fragment_width_edit_text_land"
+        android:layout_height="@dimen/button_height_normal"
         android:backgroundTint="@color/green"
-        android:onClick="buttonToLogin"
         android:text="@string/sign_up"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegisterPassword" />
