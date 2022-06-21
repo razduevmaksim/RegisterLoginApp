@@ -52,18 +52,18 @@
         android:textColorHint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegisterName"
         >
-        <com.google.android.material.textfield.TextInputEditText
+        <com.santalu.maskara.widget.MaskEditText
             android:id="@+id/editTextMobileNumber"
             android:layout_width="match_parent"
             android:layout_height="@dimen/fragment_height_edit_text"
             android:background="@color/gray_green"
-            android:inputType="phone"
+            android:inputType="number"
             android:textColor="@color/white"
             android:hint="@string/mobile_number"
             android:maxLength="17"
             android:textSize="@dimen/text_small"
-            android:fontFamily="sans-serif-thin"
-            />
+            app:mask="+___(__)___-__-__"
+            android:fontFamily="sans-serif-thin"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textViewRegisterEmail"

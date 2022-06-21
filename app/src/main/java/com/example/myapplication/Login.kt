@@ -44,48 +44,45 @@ class Login : Fragment() {
         //Установка email из хранилища
         val userMail = preferences.getString(PREF_MAIL_VALUE, "")
         editTextLoginEmail.setText(userMail)
+        var validationEmail = true
 
         //Валидация Email
-        var validationEmail = false
-        if(editTextLoginEmail.text.toString() == userMail){
-            validationEmail = true
-        }
+
         editTextLoginEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (editTextLoginEmail.text.toString() != userMail) {
+                validationEmail = if (android.util.Patterns.EMAIL_ADDRESS.matcher(editTextLoginEmail.text.toString()).matches()) {
+                    true
+                } else{
                     editTextLoginEmail.error = "Invalid Email"
-                    validationEmail = false
-                } else {
-                    validationEmail = true
+                    false
+
                 }
             }
 
             override fun afterTextChanged(p0: Editable?) {
-
             }
         })
 
-        val userPassword = preferences.getString(PREF_PASSWORD_VALUE, "")
-
         //Валидация Password
         var validationPassword = false
-        editTextLoginPassword.addTextChangedListener(object : TextWatcher{
+
+        editTextLoginPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (editTextLoginPassword.text.toString() != userPassword){
+                val onlyNumbers = editTextLoginPassword.text.toString().matches("-?\\d+(\\.\\d+)?".toRegex())
+
+                validationPassword = if (editTextLoginPassword.text.toString().length < 6 || onlyNumbers){
                     editTextLoginPassword.error = "Invalid Password"
-                    validationPassword = false
-
+                    false
                 } else{
-                    validationPassword = true
-
+                    true
                 }
             }
 
@@ -93,6 +90,7 @@ class Login : Fragment() {
 
             }
         })
+
 
         //Переход на MainPage
         buttonToMainPage.setOnClickListener{

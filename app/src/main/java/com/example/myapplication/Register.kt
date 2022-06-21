@@ -57,7 +57,9 @@ class Register : Fragment() {
             }
         })
 
+
         //Валидация MobileNumber
+
         var validationNumber = false
         editTextMobileNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -65,67 +67,15 @@ class Register : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                validationNumber =
-                    if (android.util.Patterns.PHONE.matcher(editTextMobileNumber.text.toString())
-                            .matches()
-                        && editTextMobileNumber.text.toString().length == 17
-                    ) {
-                        true
-                    } else {
-                        editTextMobileNumber.error = "Invalid Mobile Phone"
-                        false
-                    }
-
-                //Маска ввода
-
-                val text = editTextMobileNumber.text.toString()
-                val textLength = editTextMobileNumber.text?.length
-
-                if (text.endsWith(" "))
-                    return
-
-                if (textLength == 1) {
-                    if (!text.contains("+")) {
-                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "+").toString())
-                        editTextMobileNumber.text
-                            ?.let { editTextMobileNumber.setSelection(it.length) }
-                    }
-
-                } else if (textLength == 8) {
-
-                    if (!text.contains(")")) {
-                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, ")").toString())
-                        editTextMobileNumber.text
-                            ?.let { editTextMobileNumber.setSelection(it.length) }
-                    }
-
-                } else if (textLength == 5) {
-
-                    if (!text.contains("(")) {
-                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "(").toString())
-                        editTextMobileNumber.text
-                            ?.let { editTextMobileNumber.setSelection(it.length) }
-                    }
-
-                } else if (textLength == 12) {
-                    if (!text.contains("-")) {
-                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "-").toString())
-                        editTextMobileNumber.text
-                            ?.let { editTextMobileNumber.setSelection(it.length) }
-                    }
+                validationNumber = if (editTextMobileNumber.isDone){
+                    true
+                } else{
+                    editTextMobileNumber.error = "Invalid Number"
+                    false
                 }
-                else if (textLength == 15) {
-                    if (text.contains("-")) {
-                        editTextMobileNumber.setText(StringBuilder(text).insert(text.length - 1, "-").toString())
-                        editTextMobileNumber.text
-                            ?.let { editTextMobileNumber.setSelection(it.length) }
-                    }
-                }
-
             }
 
             override fun afterTextChanged(p0: Editable?) {
-
             }
         })
 
@@ -179,13 +129,14 @@ class Register : Fragment() {
         preferences = this.requireActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
         buttonToLogin.setOnClickListener { buttonView: View ->
-            if (validationName && validationNumber && validationEmail && validationPassword) {
+
+            if (validationName  && validationNumber && validationEmail && validationPassword) {
                 //Передача данных в хранилище
                 val editor = preferences.edit()
                 val userName = editTextRegisterName.text.toString()
                 editor.putString(PREF_NAME_VALUE, userName)
-                val userPhone = editTextMobileNumber.text.toString()
-                editor.putString(PREF_PHONE_VALUE, userPhone)
+                val mobileNumber = editTextMobileNumber.unMasked
+                editor.putString(PREF_PHONE_VALUE, mobileNumber)
                 val userEmail = editTextRegisterEmail.text.toString()
                 editor.putString(PREF_MAIL_VALUE, userEmail)
                 val userPassword = editTextRegisterPassword.text.toString()
