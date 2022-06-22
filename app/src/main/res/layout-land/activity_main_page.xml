@@ -10,12 +10,8 @@
     <TextView
         android:layout_width="@dimen/activity_main_page_size"
         android:layout_height="@dimen/activity_main_page_size"
-        android:textColor="@color/white"
-        android:fontFamily="sans-serif-thin"
-        android:textSize="@dimen/text_larger"
-        android:background="@color/transparent_black"
         android:text="@string/text_main_page"
-        android:gravity="center"
+        style="@style/MainPageStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

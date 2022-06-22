@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_reset_password.*
 import kotlinx.android.synthetic.main.fragment_reset_password.buttonToLogin
+import kotlinx.android.synthetic.main.fragment_reset_password.textViewSignUp
 
 
 private lateinit var preferences: SharedPreferences
@@ -38,7 +39,6 @@ class ResetPassword : Fragment() {
 
         //Валидация Email
         var validationEmail = false
-        val userMail = preferences.getString(PREF_MAIL_VALUE, "")
 
         editTextResetPasswordEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -46,11 +46,12 @@ class ResetPassword : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                validationEmail = if (editTextResetPasswordEmail.text.toString() != userMail ){
+                validationEmail = if (android.util.Patterns.EMAIL_ADDRESS.matcher(editTextResetPasswordEmail.text.toString()).matches()) {
+                    true
+                } else{
                     editTextResetPasswordEmail.error = "Invalid Email"
                     false
-                } else{
-                    true
+
                 }
             }
 
